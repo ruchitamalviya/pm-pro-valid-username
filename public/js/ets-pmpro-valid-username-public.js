@@ -30,13 +30,11 @@
 	 */
 
 	jQuery(document).ready( function($){
-		jQuery("#username").on('keyup change',function(){
+		jQuery("#username").on('keyup change paste',function(){
 			let $submitButton = jQuery("#pmpro_btn-submit");
 			let username = jQuery(this).val();
 			let $userNameErr = jQuery("#username-error");
 			let emailReg = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/;
-
-			$submitButton.removeAttr("disabled");
 
 			if( !emailReg.test(username) ){
 				$submitButton.removeAttr("disabled");
