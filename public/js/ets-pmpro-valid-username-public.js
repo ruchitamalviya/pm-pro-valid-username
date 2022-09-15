@@ -47,8 +47,9 @@
 			} else  {
 				if ( $userNameErr.length == 0 ) {
 					jQuery(".pmpro_checkout-field-username").append('<div id="username-error">Email is not allowed in the username.</div>');
-					jQuery("#username-error").css('color','red');				}
-					$submitButton.attr("disabled", true);		
+					jQuery("#username-error").css('color','red');				
+					$submitButton.attr("disabled", true);
+				}		
 			}
 		});
 	});
