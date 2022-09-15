@@ -30,21 +30,25 @@
 	 */
 
 	jQuery(document).ready( function($){
-		let etsUserErr =   true;
-		jQuery("#username").keyup(function(){
-			jQuery("#pmpro_btn-submit").removeAttr("disabled");
-			let etsUserName = jQuery('#username').val();
+		jQuery("#username").on('keyup change',function(){
+			let $submitButton = jQuery("#pmpro_btn-submit");
+			let username = jQuery(this).val();
+			let $userNameErr = jQuery("#username-error");
 			let emailReg = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/;
-			if(!emailReg.test(etsUserName)){
-				jQuery("#pmpro_btn-submit").removeAttr("disabled");
-				jQuery('.pmpro_asterisk:first').html("");
-			}else{
-				jQuery('.pmpro_asterisk:first').html("It can not be valid username");
-				jQuery('.pmpro_asterisk:first').css("color","red");
-				jQuery('.pmpro_asterisk:first').css('padding-left','10px');
-				jQuery("#pmpro_btn-submit").attr("disabled", true);
-				etsUserErr = false;
-				return false;
+
+			$submitButton.removeAttr("disabled");
+
+			if( !emailReg.test(username) ){
+				$submitButton.removeAttr("disabled");
+				if ( $userNameErr.length > 0 ) {
+					$userNameErr.remove();
+				}
+
+			} else  {
+				if ( $userNameErr.length == 0 ) {
+					jQuery(".pmpro_checkout-field-username").append('<div id="username-error">Email is not allowed in the username.</div>');
+					jQuery("#username-error").css('color','red');				}
+					$submitButton.attr("disabled", true);		
 			}
 		});
 	});
