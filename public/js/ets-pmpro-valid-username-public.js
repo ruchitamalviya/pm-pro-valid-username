@@ -31,7 +31,7 @@
 
 	jQuery(document).ready( function($){
 		jQuery("#username").on('keyup change paste',function(){
-			let $submitButton = jQuery("#pmpro_btn-submit");
+			let $submitButton = jQuery("#pmpro_btn-submit,#pmpro_btn-submit-paypalexpress");
 			let username = jQuery(this).val();
 			let $userNameErr = jQuery("#username-error");
 			let emailReg = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/;
@@ -47,6 +47,7 @@
 					jQuery(".pmpro_checkout-field-username").append('<div id="username-error">Email is not allowed in the username.</div>');
 					jQuery("#username-error").css('color','red');				
 					$submitButton.attr("disabled", true);
+				
 				}		
 			}
 		});
